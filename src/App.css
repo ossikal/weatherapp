@@ -1,38 +1,111 @@
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width:600px;
+  margin:0 auto;
+  color: #262626;
+  padding-left:20px;
+  padding-right:20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin:0;
+  background: #F8F9FA;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  text-align:center;
+  padding-top:15px;
+  padding-bottom:15px;
+  margin-bottom:20px;
+  background: #FFFFFF;
+}
+
+h1,h2,h3,h4 {
+  font-weight: normal;
+}
+
+header h1 {
+  color:#262626;
+  font-size: 23pt;
+}
+
+.cityselect select {
+  font-size:13pt;
+  width:100%;
+  border: 2px #E6E6E6 solid;
+  border-radius:7px;
+  padding:15px 20px;
+  webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(./img/caret-down.svg);
+  background-repeat: no-repeat;
+  background-position: center right 20px;
+  background-size: 12px;
+  margin-bottom: 20px;
+}
+
+.currentWeather {
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 7px;
+  max-width:100%;
+  padding:20px 20px;
+  text-align:left;
+  border: 2px #E6E6E6 solid;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  margin-bottom:20px;
 }
 
-.App-link {
-  color: #61dafb;
+.currentLocation {
+  font-size:19pt;
+  text-align:left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.description {
+  font-size:13pt;
+  color:#70757A;
+}
+
+.currentDate {
+  font-size:15pt;
+  display: block;
+}
+
+.currentTime {
+  font-size:13pt;
+  color:#70757A;
+  display: block;
+}
+
+.currentWeather .top {
+  margin-bottom:40px;
+}
+
+.currentWeather .right {
+  float:right;
+}
+
+.currentTemperature {
+  text-align: right;
+  font-size:26pt;
+}
+
+.extraInfo {
+  text-align: right;
+  font-size:13pt;
+  color:#70757A;
+}
+
+.weatherIcon {
+  float:left;
+  margin:-13% 0;
 }
