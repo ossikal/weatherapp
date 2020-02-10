@@ -1,3 +1,14 @@
+# Weather App
+This app uses the [OpenWeatherMap API](https://openweathermap.org/api), which requires an API key. Create a file called `.env` in the root of the project directory. Place your key inside the `.env` file like this: 
+
+    # .env
+    REACT_APP_API_KEY=your_api_key
+
+    # Example
+    REACT_APP_API_KEY=123456789
+    
+**Note:** This method should never be used in production as it makes your API key public 😱
+
 ## Available Scripts
 
 In the project directory, you can run:

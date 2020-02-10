@@ -6,6 +6,7 @@
   color: #262626;
   padding-left:20px;
   padding-right:20px;
+  padding-bottom:20px;  
 }
 
 * {
@@ -39,7 +40,7 @@ header h1 {
 .cityselect select {
   font-size:13pt;
   width:100%;
-  border: 2px #E6E6E6 solid;
+  border: 0.1em #E6E6E6 solid;
   border-radius:7px;
   padding:15px 20px;
   webkit-appearance: none;
@@ -102,18 +103,20 @@ header h1 {
 
 .extraInfo {
   text-align: right;
-  font-size:13pt;
+  font-size:12pt;
   color:#70757A;
 }
 
 .weatherIcon {
   float:left;
-  margin:-13% 0;
+  width: 100px;
+  margin:-15% 0;
 }
 
 .half {
   display:flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .forecastCards {
@@ -149,12 +152,13 @@ header h1 {
 
 .forecastExtra {
   background: #E5F6FD;
+  border-top: 0.12em #E6E6E6 solid;
   margin-top:10px;
   padding-bottom:5px;
   padding-top:5px;
 }
 
 .forecastExtra p {
-  font-size: 10pt;
+  font-size: 0.8rem;
   color: #70757A;
 }

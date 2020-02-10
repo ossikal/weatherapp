@@ -84,6 +84,8 @@ class CurrentWeather extends React.Component {
         const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
         ];
+        let minutes = this.state.currentTime.getMinutes();
+        minutes = ("0" + minutes).slice(-2);
 
         return ( 
             <div>
@@ -97,7 +99,7 @@ class CurrentWeather extends React.Component {
 
                         <div>
                             <span className="currentDate">{monthNames[this.state.currentTime.getMonth()] + " " + this.state.currentTime.getDate()}</span>
-                            <span className="currentTime">{this.state.currentTime.getHours() + ":" + this.state.currentTime.getMinutes()}</span>
+                            <span className="currentTime">{this.state.currentTime.getHours() + ":" + minutes}</span>
                         </div>
                     </div>
 
@@ -109,7 +111,7 @@ class CurrentWeather extends React.Component {
 
                         <div>
                             <p className="extraInfo">Wind: {this.state.results.wind.speed} m/s<br/>Humidity: {this.state.results.main.humidity}%</p>
-                            <p className="extraInfo">Precipitation (3h):{this.state.results.rain != null ? this.state.results.rain["1h"] : " 0"} mm</p>
+                            <p className="extraInfo">Precipitation (3h):{this.state.results.rain != null ? this.state.results.rain["3h"] : " 0"} mm</p>
                         </div>
                     </div>
                 </div>
