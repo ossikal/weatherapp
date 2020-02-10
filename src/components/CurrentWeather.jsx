@@ -31,6 +31,13 @@ class CurrentWeather extends React.Component {
         this.getData(this.getCityId(this.props.location))
     }
 
+    componentDidUpdate(prevProps) {
+        // Compare props or this creates an infinite loop
+        if (this.props.location !== prevProps.location) {
+            this.getData(this.getCityId(this.props.location))
+        }
+    }
+
      //Check HTTP status for fetch
      checkStatus(response) {
         if (response.status >= 200 && response.status < 300) {
@@ -54,12 +61,10 @@ class CurrentWeather extends React.Component {
 
             //Successful fetch
             .then(function(data) {
-                console.log(data.name)
                 this.setState({
                     results: data,
                     loading:false
                 })
-                console.log(this.state.results.weather[0].description)
             }.bind(this))
 
 
@@ -84,7 +89,7 @@ class CurrentWeather extends React.Component {
             <div>
                 {this.state.loading === false &&
                 <div className="currentWeather"> 
-                    <div>
+                    <div className="half">
                         <div className="top">
                             <h1 className="currentLocation">{this.props.location}</h1>
                             <span className="description">{this.state.results.weather[0].description}</span>
@@ -96,7 +101,7 @@ class CurrentWeather extends React.Component {
                         </div>
                     </div>
 
-                    <div>
+                    <div className="half">
                         <div className="top">
                             <img src={"http://openweathermap.org/img/wn/" + this.state.results.weather[0].icon + "@2x.png"} className="weatherIcon" alt="Weather icon"></img>
                             <h1 className="currentTemperature">{(this.state.results.main.temp - 273.15).toFixed(0)} °C</h1>
@@ -104,7 +109,7 @@ class CurrentWeather extends React.Component {
 
                         <div>
                             <p className="extraInfo">Wind: {this.state.results.wind.speed} m/s<br/>Humidity: {this.state.results.main.humidity}%</p>
-                            {this.state.results.rain && <p>Precipitation (3h): {this.state.results.rain.rain}</p>}
+                            <p className="extraInfo">Precipitation (3h):{this.state.results.rain != null ? this.state.results.rain["1h"] : " 0"} mm</p>
                         </div>
                     </div>
                 </div>

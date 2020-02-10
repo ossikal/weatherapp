@@ -1,5 +1,6 @@
 import React from "react";
 import CurrentWeather from "./CurrentWeather"
+import ForecastCards from "./ForecastCards"
 
 class WeatherCards extends React.Component {
     constructor(props) {
@@ -15,9 +16,14 @@ class WeatherCards extends React.Component {
         return ( 
             <div>
                 {this.props.location !== "Kaikki" &&
+                    <div>
                     <CurrentWeather 
                     location={this.props.location}
                     />
+                    <ForecastCards
+                    location={this.props.location}
+                    />
+                    </div>
                 }
 
                 {this.props.location === "Kaikki" &&
@@ -25,20 +31,33 @@ class WeatherCards extends React.Component {
                         <CurrentWeather 
                         location={"Helsinki"}
                         />
+                        <ForecastCards 
+                        location={"Helsinki"}
+                        />
+
                         <CurrentWeather 
                         location={"Jyväskylä"}
                         />
+                        <ForecastCards 
+                        location={"Jyväskylä"}
+                        />
+
                         <CurrentWeather 
                         location={"Kuopio"}
                         />
+                        <ForecastCards 
+                        location={"Kuopio"}
+                        />
+
                         <CurrentWeather 
+                        location={"Tampere"}
+                        />
+                        <ForecastCards 
                         location={"Tampere"}
                         />
                     </div>
                 }
 
-                
-                
                 <div className="forecasts">
 
                 </div>

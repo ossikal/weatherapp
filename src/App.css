@@ -59,10 +59,10 @@ header h1 {
   max-width:100%;
   padding:20px 20px;
   text-align:left;
-  border: 2px #E6E6E6 solid;
+  border: 0.12em #E6E6E6 solid;
   display: flex;
   justify-content: space-between;
-  margin-bottom:20px;
+  margin-bottom:10px;
 }
 
 .currentLocation {
@@ -97,6 +97,7 @@ header h1 {
 .currentTemperature {
   text-align: right;
   font-size:26pt;
+  float:right;
 }
 
 .extraInfo {
@@ -108,4 +109,52 @@ header h1 {
 .weatherIcon {
   float:left;
   margin:-13% 0;
+}
+
+.half {
+  display:flex;
+  flex-direction: column;
+}
+
+.forecastCards {
+  display:flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: space-between;
+}
+
+.forecastCard {
+  flex-grow:1;
+  border: 0.12em #E6E6E6 solid;
+  border-radius:6px;
+  background:#FFFFFF;
+  width:auto;
+  margin-bottom:25px;
+  padding-top:15px;
+  margin-right:5px;
+}
+
+.forecastCard:last-child {
+  margin-right: 0;
+}
+
+.forecastTime {
+  color: #70757A;
+}
+
+.forecastTemp {
+  font-size:15pt;
+  color:#70757A;
+}
+
+.forecastExtra {
+  background: #E5F6FD;
+  margin-top:10px;
+  padding-bottom:5px;
+  padding-top:5px;
+}
+
+.forecastExtra p {
+  font-size: 10pt;
+  color: #70757A;
 }
