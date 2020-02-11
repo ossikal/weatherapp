@@ -1,5 +1,7 @@
 import React from "react";
 
+// CurrentWeather renders individual current weather-cards
+
 class CurrentWeather extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +14,7 @@ class CurrentWeather extends React.Component {
         this.getCityId = this.getCityId.bind(this);
     }
 
+    // Get cityid for specified locations (needed in the API request)
     getCityId(location) {
         switch (location) {
             case 'Helsinki':
@@ -27,10 +30,12 @@ class CurrentWeather extends React.Component {
         }
     }
 
+    // Call getData function when component mounts
     componentDidMount() {
         this.getData(this.getCityId(this.props.location))
     }
 
+    // Call getData function when component updates
     componentDidUpdate(prevProps) {
         // Compare props or this creates an infinite loop
         if (this.props.location !== prevProps.location) {
@@ -38,7 +43,7 @@ class CurrentWeather extends React.Component {
         }
     }
 
-     //Check HTTP status for fetch
+     // Check HTTP status for fetch
      checkStatus(response) {
         if (response.status >= 200 && response.status < 300) {
             return response
@@ -50,7 +55,9 @@ class CurrentWeather extends React.Component {
         }
     }
 
+    // API fetch
     getData(city_id) {
+        // API request url, key comes from the .env file
         const url = "http://api.openweathermap.org/data/2.5/weather?id=" + city_id + "&APPID=" + process.env.REACT_APP_API_KEY;
 
         fetch(url)
@@ -111,7 +118,7 @@ class CurrentWeather extends React.Component {
 
                         <div>
                             <p className="extraInfo">Wind: {this.state.results.wind.speed} m/s<br/>Humidity: {this.state.results.main.humidity}%</p>
-                            <p className="extraInfo">Precipitation (3h):{this.state.results.rain != null ? this.state.results.rain["3h"] : " 0"} mm</p>
+                            <p className="extraInfo">Precipitation (3h): {(this.state.results.rain && typeof this.state.results.rain["3h"] !== "undefined") ? this.state.results.rain["3h"] : "0"} mm</p>
                         </div>
                     </div>
                 </div>

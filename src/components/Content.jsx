@@ -1,6 +1,8 @@
 import React from "react";
 import WeatherCards from "./WeatherCards";
 
+// Content calls the city select dropdown and the WeatherCards component
+
 class Content extends React.Component {
     constructor(props) {
         super(props);

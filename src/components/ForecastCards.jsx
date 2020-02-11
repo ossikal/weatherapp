@@ -2,6 +2,8 @@ import React from "react";
 import ForecastCardSingle from "./ForecastCardSingle";
 
 
+// ForecastCards renders the right amount of individual forecast cards
+
 class ForecastCards extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +14,7 @@ class ForecastCards extends React.Component {
        
     }
 
+    // Get cityid for specified locations (needed in the API request)
     getCityId(location) {
         switch (location) {
             case 'Helsinki':
@@ -50,6 +53,7 @@ class ForecastCards extends React.Component {
         }
     }
 
+    // API Fetch
     getData(city_id) {
         const url = "http://api.openweathermap.org/data/2.5/forecast?id=" + city_id + "&APPID=" + process.env.REACT_APP_API_KEY;
 
@@ -65,7 +69,6 @@ class ForecastCards extends React.Component {
                     results: data,
                     loading:false
                 })
-                console.log(this.state.results)
             }.bind(this))
 
 
@@ -80,60 +83,24 @@ class ForecastCards extends React.Component {
 
 
     render() {
-
-    
-
         return ( 
             <div>
                     {this.state.loading === false &&
                     <div className="forecastCards">
-                        
-                    <ForecastCardSingle 
-                        time={this.state.results.list[0].dt_txt}
-                        icon={this.state.results.list[0].weather[0].icon}
-                        temp={this.state.results.list[0].main.temp}
-                        wind={this.state.results.list[0].wind.speed}
-                        humidity={this.state.results.list[0].main.humidity}
-                        rain={this.state.results.list[0].rain != null ? this.state.results.list[0].rain["3h"] : "0"}
-                    />
-                   
-                    
-                    <ForecastCardSingle 
-                        time={this.state.results.list[1].dt_txt}
-                        icon={this.state.results.list[1].weather[0].icon}
-                        temp={this.state.results.list[1].main.temp}
-                        wind={this.state.results.list[1].wind.speed}
-                        humidity={this.state.results.list[1].main.humidity}
-                        rain={this.state.results.list[1].rain != null ? this.state.results.list[1].rain["3h"] : "0"}
-                    />
 
-                    <ForecastCardSingle 
-                        time={this.state.results.list[2].dt_txt}
-                        icon={this.state.results.list[2].weather[0].icon}
-                        temp={this.state.results.list[2].main.temp}
-                        wind={this.state.results.list[2].wind.speed}
-                        humidity={this.state.results.list[2].main.humidity}
-                        rain={this.state.results.list[2].rain != null ? this.state.results.list[2].rain["3h"] : "0"}
-                    />
-
-                    <ForecastCardSingle 
-                        time={this.state.results.list[3].dt_txt}
-                        icon={this.state.results.list[3].weather[0].icon}
-                        temp={this.state.results.list[3].main.temp}
-                        wind={this.state.results.list[3].wind.speed}
-                        humidity={this.state.results.list[3].main.humidity}
-                        rain={this.state.results.list[3].rain != null ? this.state.results.list[3].rain["3h"] : "0"}
-                    />
-
-                    <ForecastCardSingle 
-                        time={this.state.results.list[4].dt_txt}
-                        icon={this.state.results.list[4].weather[0].icon}
-                        temp={this.state.results.list[4].main.temp}
-                        wind={this.state.results.list[4].wind.speed}
-                        humidity={this.state.results.list[4].main.humidity}
-                        rain={this.state.results.list[4].rain != null ? this.state.results.list[4].rain["3h"] : "0"}
-                    />
-                    
+                    {this.state.results.list.slice(0,5).map((value, index) => {
+                            return (
+                                <ForecastCardSingle 
+                                time={this.state.results.list[index].dt_txt}
+                                icon={this.state.results.list[index].weather[0].icon}
+                                temp={this.state.results.list[index].main.temp}
+                                wind={this.state.results.list[index].wind.speed}
+                                humidity={this.state.results.list[index].main.humidity}
+                                rain={this.state.results.list[index].rain != null ? this.state.results.list[index].rain["3h"] : "0"}
+                            />
+                            )
+                    })}
+        
                     </div>
                     }
                 

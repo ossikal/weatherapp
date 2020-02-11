@@ -1,7 +1,8 @@
 import React from "react";
 
+// ForecastCardSingle defines the content of a single forecast card
 
-class ForecastCards extends React.Component {
+class ForecastCardSingle extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,5 +33,5 @@ class ForecastCards extends React.Component {
     }
 }
   
-export default ForecastCards;
+export default ForecastCardSingle;
 
